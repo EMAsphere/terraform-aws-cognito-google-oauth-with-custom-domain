@@ -1,6 +1,9 @@
 resource "aws_cognito_user_pool" "users" {
   name                     = local.user_pool_name
   auto_verified_attributes = ["email"]
+  admin_create_user_config {
+    allow_admin_create_user_only = true
+  }
 }
 
 resource "aws_cognito_identity_provider" "google" {
